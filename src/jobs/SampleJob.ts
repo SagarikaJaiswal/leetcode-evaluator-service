@@ -10,7 +10,11 @@ export class SampleJob implements IJob {
     this.payload = payload;
   }
   handle = (job?: Job) => {
-    console.log("Successfully completed the job", job?.data);
+    console.log("Handler for the job starting...");
+    console.log(this.payload);
+    if (job) {
+      console.log(job.name, job.id, job.data);
+    }
   };
   failed = (job?: Job) => {
     console.log("Job failed - ", job?.id, job?.name);
