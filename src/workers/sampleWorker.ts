@@ -8,11 +8,17 @@ export default function sampleWorker(queuename: string) {
     queuename,
     async (job) => {
       console.log("sample job worker kicking in");
+      const sampleJobInstance = new SampleJob(job.data);
       if (job.name === "SampleJob") {
-        const sampleJobInstance = new SampleJob(job.data);
+        //const sampleJobInstance = new SampleJob(job.data);
         sampleJobInstance.handle(job);
       }
-      //return true;
+      //else {
+      //   //const sampleJobInstance = new SampleJob(job.data);
+      //   sampleJobInstance.failed(job);
+      //   return false;
+      // }
+      return true;
     },
     { connection: redisConnection }
   );

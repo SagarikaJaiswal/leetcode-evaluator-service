@@ -17,6 +17,6 @@ export class SampleJob implements IJob {
     }
   };
   failed = (job?: Job) => {
-    console.log("Job failed - ", job?.id, job?.name);
+    console.log("Job failed - ", job?.id, job?.name, job?.data);
   };
 }
